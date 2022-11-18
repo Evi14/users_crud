@@ -43,7 +43,15 @@ def userInfo():
         "id":id
     }
     user = User.get_oneUser(data)
-    return render_template("userInfo.html", user = user)    
+    return render_template("userInfo.html", user = user) 
+
+@app.route('/users/<int:id>')
+def show(id):
+    data ={ 
+        "id":id
+    }
+    user = User.get_selectedUser(data)
+    return render_template("userInfo.html", user = user) 
 
 @app.route('/users/delete/<int:id>')
 def deleteUser(id):
